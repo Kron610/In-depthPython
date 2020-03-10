@@ -63,9 +63,9 @@ class Money:
         return self.converter.convert(from_, to_)
     
     def __add__(self, other):
-        if (type(other) == float or type(other) == int):
+        if ((type(other) == float or type(other) == int) and self.currency != None):
             return Money(self.converter, self.amount + other, self.currency)
-        if (self.currency == None and other.currency == None):
+        if (self.currency == None and other.currency == None or (type(other) == float or type(other) == int) and self.currency == None):
             raise Exception("Both operands have no currency defined")
         if (self.currency == None):
             first = other
