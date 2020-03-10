@@ -1,42 +1,3 @@
-class Converter:
-    
-    def __init__(self):
-        _dict = dict()
-        _dict[(None, 'RUB')] = 1
-        _dict[(None, 'GBP')] = 1
-        _dict[(None, 'EUR')] = 1
-        _dict[(None, 'USD')] = 1
-        _dict[(None, 'JPY')] = 1
-        _dict[('RUB', 'RUB')] = 1
-        _dict[('GBP', 'GBP')] = 1
-        _dict[('EUR', 'EUR')] = 1
-        _dict[('USD', 'USD')] = 1
-        _dict[('JPY', 'JPY')] = 1
-        _dict[('GBP', 'RUB')] = 89.4576
-        _dict[('EUR', 'RUB')] = 77.3875
-        _dict[('USD', 'RUB')] = 68.5630
-        _dict[('JPY', 'RUB')] = 0,6506
-        _dict[('RUB', 'GBP')] = 1 / _dict[('GBP', 'RUB')]
-        _dict[('RUB', 'EUR')] = 1 / _dict[('EUR', 'RUB')]
-        _dict[('RUB', 'USD')] = _dict[('USD', 'RUB')]
-        _dict[('RUB', 'JPY')] = _dict[('JPY', 'RUB')]
-        _dict[('EUR', 'USD')] = 1.1309
-        _dict[('EUR', 'GBP')] = 0.8685
-        _dict[('EUR', 'JPY')] = 118.9050
-        _dict[('USD', 'EUR')] = 1 / _dict[('EUR', 'USD')]
-        _dict[('GBP', 'EUR')] = 1 / _dict[('EUR', 'GBP')]
-        _dict[('JPY', 'EUR')] = 1 / _dict[('EUR', 'JPY')]
-        _dict[('USD', 'GBP')] = 0.7664
-        _dict[('USD', 'JPY')] = 105.3800
-        _dict[('GBP', 'USD')] = 1 / _dict[('USD', 'GBP')]
-        _dict[('JPY', 'USD')] = 1/ _dict[('USD', 'JPY')]
-        _dict[('GBP', 'JPY')] = 137.4946
-        _dict[('JPY', 'GBP')] = 1 / _dict[('GBP', 'JPY')]
-        self._dict = _dict
-        
-    def convert(self, frSom_, to_):
-        return self._dict[(from_, to_)]
-
 
 
 class Converter:
@@ -74,6 +35,7 @@ class Converter:
         _dict[('GBP', 'JPY')] = 137.4946
         _dict[('JPY', 'GBP')] = 1 / _dict[('GBP', 'JPY')]
         self._dict = _dict
+
     def convert(self, from_, to_):
         return self._dict[(from_, to_)]
     
@@ -121,6 +83,8 @@ class Money:
     def __repr__(self):
         return str(self)
 
+
+
 def main(): 
     converter = Converter()
     dollars = Money(converter, 5, "USD")
@@ -133,5 +97,8 @@ def main():
         print(money + money)
     except Exception:
         print("Something's wrong")
+
+
+        
 if __name__ == "__main__":
     main()
