@@ -34,7 +34,7 @@ class Converter:
         _dict[('JPY', 'GBP')] = 1 / _dict[('GBP', 'JPY')]
         self._dict = _dict
         
-    def convert(self, from_, to_):
+    def convert(self, frSom_, to_):
         return self._dict[(from_, to_)]
 
 
@@ -104,7 +104,7 @@ class Money:
         if (type(other) == float or type(other) == int):
             return Money(self.converter, self.amount + other, self.currency)
         if (self.currency == None and other.currency == None):
-            return Money(converter, self.amount + other.amount)
+            raise Exception("Both operands have no currency defined")
         if (self.currency == None):
             first = other
             second = self
@@ -129,6 +129,9 @@ def main():
     print(dollars + euro)
     print(dollars + money)
     print(euro + 19)
-
+    try:
+        print(money + money)
+    except Exception:
+        print("Something's wrong")
 if __name__ == "__main__":
     main()
